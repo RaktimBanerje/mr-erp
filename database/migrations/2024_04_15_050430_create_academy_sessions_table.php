@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('academy_sessions', function (Blueprint $table) {
             $table->id();
             $table->text('name');
+            $table->softDeletes();
             $table->timestamps();
         });
     }

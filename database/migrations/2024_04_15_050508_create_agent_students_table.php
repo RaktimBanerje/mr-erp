@@ -25,6 +25,8 @@ return new class extends Migration
             $table->foreignIdFor(College::class);
             $table->foreignIdFor(Course::class);
             $table->foreignIdFor(AcademySession::class);
+            $table->integer("created_by");
+            $table->softDeletes();
             $table->timestamps();
         });
     }

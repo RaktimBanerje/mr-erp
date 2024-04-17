@@ -18,6 +18,8 @@ return new class extends Migration
             $table->float("proposed_fees", 11, 2);
             $table->float("asking_fees", 11, 2);
             $table->text("docs");
+            $table->integer("created_by");
+            $table->softDeletes();
             $table->timestamps();
         });
     }

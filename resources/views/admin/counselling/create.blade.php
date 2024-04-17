@@ -16,34 +16,9 @@
                     <!--begin::Page title-->
                     <div class="page-title d-flex flex-column justify-content-center gap-1 me-3">
                         <!--begin::Title-->
-                        <h1
-                            class="page-heading d-flex flex-column justify-content-center text-gray-900 fw-bold fs-3 m-0">
+                        <h1 class="page-heading d-flex flex-column justify-content-center text-gray-900 fw-bold fs-3 m-0">
                             New Counselling
                         </h1>
-                        <!--end::Title-->
-
-                        {{-- <!--begin::Breadcrumb-->
-                        <ul class="breadcrumb breadcrumb-separatorless fw-semibold fs-7 my-0">
-                            <!--begin::Item-->
-                            <li class="breadcrumb-item text-muted">
-                                <a href="https://preview.keenthemes.com/metronic8/demo39/index.html"
-                                    class="text-muted text-hover-primary">
-                                    Home </a>
-                            </li>
-                            <!--end::Item-->
-                            <!--begin::Item-->
-                            <li class="breadcrumb-item">
-                                <span class="bullet bg-gray-500 w-5px h-2px"></span>
-                            </li>
-                            <!--end::Item-->
-
-                            <!--begin::Item-->
-                            <li class="breadcrumb-item text-muted">
-                                Dashboards </li>
-                            <!--end::Item-->
-
-                        </ul>
-                        <!--end::Breadcrumb--> --}}
                     </div>
                     <!--end::Page title-->
                 </div>
@@ -59,14 +34,14 @@
             <!--begin::Content container-->
             <div id="kt_app_content_container" class="app-container  container-fluid ">
                 
-                <form action="{{route('agentstudent.store')}}" method="POST" enctype="multipart/form-data">
+                <form action="{{route('counselling.store')}}" method="POST" enctype="multipart/form-data">
                     @csrf
                     <!--begin::Row-->
                     <div class="row gy-5 gx-xl-10 mb-5">
                         <div class="col-md-3">
                             <div class="form-group mb-4">
                                 <label class="form-label">Student Image</label>
-                                <input type="file" class="form-control" name="image" required>
+                                <img class="img-fluid" src="{{Storage::url($student->image)}}" />
                             </div>
                         </div>
 
@@ -75,10 +50,10 @@
                                 <div class="col-md-4">
                                     <div class="form-group mb-4">
                                         <label class="form-label">College</label>
-                                        <select class="form-select" name="college_id" required>
+                                        <select class="form-select" name="college_id" disabled readonly required>
                                             <option value="">Select</option>
                                             @foreach($colleges as $college)
-                                                <option value="{{$college->id}}">{{$college->name}}</option>
+                                                <option value="{{$college->id}}" <?php if($student->college_id == $college->id) {echo "selected";} ?>>{{$college->name}}</option>
                                             @endforeach
                                         </select>
                                     </div>
@@ -86,10 +61,10 @@
                                 <div class="col-md-4">
                                     <div class="form-group mb-4">
                                         <label class="form-label">Course</label>
-                                        <select class="form-select" name="course_id" required>
+                                        <select class="form-select" name="course_id" disabled readonly required>
                                             <option value="">Select</option>
                                             @foreach($courses as $course)
-                                                <option value="{{$course->id}}">{{$course->name}}</option>
+                                                <option value="{{$course->id}}" <?php if($student->course == $course->id) {echo "selected";} ?>>{{$course->name}}</option>
                                             @endforeach
                                         </select>
                                     </div>
@@ -97,10 +72,10 @@
                                 <div class="col-md-4">
                                     <div class="form-group mb-4">
                                         <label class="form-label">Academy Session</label>
-                                        <select class="form-select" name="academy_session_id" required>
+                                        <select class="form-select" name="academy_session_id" disabled readonly required>
                                             <option value="">Select</option>
                                             @foreach($academy_sessions as $session)
-                                                <option value="{{$session->id}}">{{$session->name}}</option>
+                                                <option value="{{$session->id}}" <?php if($student->academy_session_id == $session->id) {echo "selected";} ?>>{{$session->name}}</option>
                                             @endforeach
                                         </select>
                                     </div>
@@ -109,31 +84,31 @@
                                 <div class="col-md-4">
                                     <div class="form-group mb-4">
                                         <label class="form-label">Unique Identity</label>
-                                        <input type="text" class="form-control" name="identity" required>
+                                        <input type="text" class="form-control" name="identity" value="{{$student->identity}}" disabled readonly required>
                                     </div>
                                 </div>
                                 <div class="col-md-4">
                                     <div class="form-group mb-4">
                                         <label class="form-label">Student Name</label>
-                                        <input type="text" class="form-control" name="name" required>
+                                        <input type="text" class="form-control" name="name" value="{{$student->name}}" disabled readonly required>
                                     </div>
                                 </div>
                                 <div class="col-md-4">
                                     <div class="form-group mb-4">
                                         <label class="form-label">DOB</label>
-                                        <input type="date" class="form-control" name="dob" required>
+                                        <input type="date" class="form-control" name="dob" value="{{$student->dob}}" disabled readonly required>
                                     </div>
                                 </div>
                                 <div class="col-md-4">
                                     <div class="form-group mb-4">
                                         <label class="form-label">Phone No.</label>
-                                        <input type="text" class="form-control" name="phone" required>
+                                        <input type="text" class="form-control" name="phone" value="{{$student->phone}}" disabled readonly required>
                                     </div>
                                 </div>
                                 <div class="col-md-4">
                                     <div class="form-group mb-4">
                                         <label class="form-label">Additional Phone No.</label>
-                                        <input type="text" class="form-control" name="additional_phone_no" required>
+                                        <input type="text" class="form-control" name="additional_phone_no" value="{{$student->additional_phone_no}}" disabled readonly required>
                                     </div>
                                 </div>
                             </div>
@@ -163,7 +138,8 @@
                         </div>
                     </div>
                     <!--end::Row-->
-
+                    
+                    <input type="text" class="d-none" name="student_id" value="{{$student->id}}" required>
                     <button type="submit" class="btn btn-primary">Save</button>
                 </form>
                 
