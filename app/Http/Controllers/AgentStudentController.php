@@ -49,9 +49,6 @@ class AgentStudentController extends Controller
                 $student->last_counselling =  Counselling::whereIn('agent_student_id', $id_records)->latest()->first();
                 $students[] = $student;
             }
-
-            
-
         }
 
         return view('admin.agent.index', compact('colleges', 'courses', 'academy_sessions', 'students'));

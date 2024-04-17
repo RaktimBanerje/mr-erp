@@ -15,6 +15,64 @@
     <link href="../assets/plugins/global/plugins.bundle.css" rel="stylesheet" type="text/css" />
     <link href="../assets/css/style.bundle.css" rel="stylesheet" type="text/css" />
 
+    <style>
+        /* 
+        .nav-pills-button {
+            border: 1px solid grey !important; 
+            background-color: antiquewhite !important; 
+            color: black !important;
+        } */
+
+        .nav-link.tab-button {
+            border: 1px solid grey !important;
+            font-weight: bold; 
+            background-color: whitesmoke !important; 
+            color: black !important; 
+            height: 100% !important;
+            transition: 0.5s !important;
+        }
+
+        .nav-link.tab-button:hover {
+            color: dodgerblue !important; 
+            background-color: aliceblue !important;
+            transition: 0.5s !important;
+        }
+
+        .nav-link.tab-button.active {
+            border: 1px solid dodgerblue !important;
+            color: white !important; 
+            background-color: dodgerblue !important;
+        }
+        
+        textarea, input, select {
+            border: 0.5px solid #d8eafa !important;
+            color: black !important;
+            border-radius: 4px !important;
+        }
+
+
+        textarea, input[type=text], input[type=email], input[type=number], input[type=date], select {
+            background-color: #d8eafa !important;
+        }
+
+        textarea, input[type=text]:focus, input[type=email]:focus, input[type=number]:focus, input[type=date]:focus, select:focus {
+            border: 1px solid dodgerblue !important;
+            background-color: #d8eafa !important;
+        }
+
+        textarea, input:disabled, select:disabled {
+            opacity: 0.6 !important;
+            background-color: whitesmoke !important;
+        }
+
+        .input-disabled {
+            pointer-events: none !important;
+            opacity: 0.6 !important;
+            background-color: whitesmoke !important;
+            border: 1px solid grey !important;;
+        }
+    </style>
+
 </head>
 <!--end::Head-->
 
