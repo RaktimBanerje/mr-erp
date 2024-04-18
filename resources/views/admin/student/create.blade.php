@@ -238,6 +238,33 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="tab-pane fade" id="tab-4" role="tabpanel">
+                            <div class="row">
+                                <div class="table-responsive">
+                                     <table class="table table-bordered">
+                                        <thead>
+                                            <tr>
+                                                <th>Payment For</th>
+                                                <th>Payment Date</th>
+                                                <th>Payment Amount</th>
+                                                <th>Action</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="fees_tbody">
+                                            <!-- Initial row -->
+                                            <tr>
+                                                <td><input class="form-control" type="text" name="payment_for[]" /></td>
+                                                <td><input class="form-control" type="date" name="payment_date[]" /></td>
+                                                <td><input class="form-control" type="number" name="payment_amount[]" /></td>
+                                                <td><button class="btn btn-sm btn-danger delete-row">Delete</button></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+
+                            <button id="add-row" type="button" class="btn btn-sm btn-primary">Add</button>
+                        </div>
                     </div>
                 </div>
                 <!--end::Content container-->
@@ -248,4 +275,25 @@
 
         <button type="submit" class="btn btn-primary">Save</button>
     </form>
+
+    <script>
+        $(document).ready(function () {
+            // Add new row
+            $("#add-row").on("click", function () {
+                var newRow = `
+                    <tr>
+                        <td><input class="form-control" type="text" name="payment_for[]" /></td>
+                        <td><input class="form-control" type="date" name="payment_date[]" /></td>
+                        <td><input class="form-control" type="number" name="payment_amount[]" /></td>
+                        <td><button class="btn btn-sm btn-danger delete-row">Delete</button></td>
+                    </tr>`;
+                $("#fees_tbody").append(newRow);
+            });
+
+            // Delete row
+            $("#fees_tbody").on("click", ".delete-row", function () {
+                $(this).closest("tr").remove();
+            });
+        });
+    </script>
 @stop

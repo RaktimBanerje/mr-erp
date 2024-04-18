@@ -6,6 +6,7 @@ use App\Models\College;
 use App\Models\Course;
 use App\Models\AcademySession;
 use App\Models\Student;
+use App\Models\StudentFees;
 use Illuminate\Http\Request;
 
 class StudentController extends Controller
@@ -63,6 +64,17 @@ class StudentController extends Controller
         $student->created_by = auth()->user()->id;
         $student->save();
 
+        $number_of_rows = $request->payment_date;
+        
+        for($i = 0; $i < count($number_of_rows); $i++) {
+            $student_fees = New StudentFees();
+            $student_fees->student_id = $student->id;
+            $student_fees->payment_for = $request->payment_for[$i];
+            $student_fees->payment_date = $request->payment_date[$i];
+            $student_fees->payment_amount = $request->payment_amount[$i];
+            $student_fees->save();
+        }
+        
         return redirect()->route("admission.index")->with("New record created successfully");
     }
 

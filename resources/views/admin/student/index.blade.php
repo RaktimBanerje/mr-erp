@@ -75,7 +75,6 @@
                                         <td class="text-nowrap">
                                             <div class="btn btn-group p-0">
                                                 <a class="btn btn-sm btn-primary mx-1" href="#">Edit</a>
-                                                <a class="btn btn-sm btn-primary mx-1" href="#">Delete</a>
                                             </div>
                                         </td>
                                     </tr>

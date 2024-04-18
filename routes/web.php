@@ -4,6 +4,7 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AgentStudentController;
 use App\Http\Controllers\CounsellingController;
+use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\StudentController;
 
 /*
@@ -30,6 +31,7 @@ Route::middleware('auth')->group(function () {
     Route::resource('agentstudent', AgentStudentController::class);
     Route::resource('counselling', CounsellingController::class);
     Route::resource('admission', StudentController::class);
+    Route::resource('payment', PaymentController::class);
 
     Route::get('/', function () {
         if (auth()->user()->role == 'agent') {
@@ -39,6 +41,9 @@ Route::middleware('auth')->group(function () {
             return redirect()->route('agentstudent.index');
         } 
         elseif (auth()->user()->role == 'admission support') {
+            return redirect()->route('admission.index');
+        } 
+        elseif (auth()->user()->role == 'accountant') {
             return redirect()->route('admission.index');
         }
     });
