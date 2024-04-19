@@ -31,6 +31,10 @@ Route::middleware('auth')->group(function () {
     Route::resource('agentstudent', AgentStudentController::class);
     Route::resource('counselling', CounsellingController::class);
     Route::resource('admission', StudentController::class);
+
+    Route::get('payment/fees-detail/{student_id}', [PaymentController::class, 'fees_detail'])->name('payment.fees_detail');
+    Route::get('payment/search', [PaymentController::class, 'search_page'])->name('payment.search_page');
+    Route::post('payment/search', [PaymentController::class, 'search'])->name('payment.search');
     Route::resource('payment', PaymentController::class);
 
     Route::get('/', function () {
@@ -44,7 +48,7 @@ Route::middleware('auth')->group(function () {
             return redirect()->route('admission.index');
         } 
         elseif (auth()->user()->role == 'accountant') {
-            return redirect()->route('admission.index');
+            return redirect()->route('payment.index');
         }
     });
     

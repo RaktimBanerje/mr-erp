@@ -7,6 +7,7 @@ use App\Models\Course;
 use App\Models\AcademySession;
 use App\Models\Payment;
 use App\Models\Student;
+use App\Models\StudentFees;
 use Illuminate\Http\Request;
 
 class PaymentController extends Controller
@@ -16,7 +17,7 @@ class PaymentController extends Controller
      */
     public function index()
     {
-        //
+        return view("admin.payment.index");
     }
 
     /**
@@ -123,6 +124,15 @@ class PaymentController extends Controller
         $students = $students->get();
 
         // Pass search results to a view (replace 'payment.search' with your actual view)
-        return view('payment.create', compact('colleges', 'courses', 'academy_sessions', 'students'));
+        return view('admin.payment.create', compact('colleges', 'courses', 'academy_sessions', 'students'));
+    }
+
+    public function fees_detail(Request $request) {
+        $colleges = College::latest()->get();
+        $courses = Course::latest()->get();
+        $academy_sessions = AcademySession::latest()->get();
+        $student_fees = StudentFees::where("student_id", $request->student_id)->get();
+
+        return view("admin.payment.create", compact('colleges', 'courses', 'academy_sessions', 'student_fees'));
     }
 }
