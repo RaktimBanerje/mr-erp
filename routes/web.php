@@ -32,6 +32,7 @@ Route::middleware('auth')->group(function () {
     Route::resource('counselling', CounsellingController::class);
     Route::resource('admission', StudentController::class);
 
+    Route::get('payment/new-collection/{student_id}', [PaymentController::class, 'new_collection'])->name('payment.new_collection');
     Route::get('payment/fees-detail/{student_id}', [PaymentController::class, 'fees_detail'])->name('payment.fees_detail');
     Route::get('payment/search', [PaymentController::class, 'search_page'])->name('payment.search_page');
     Route::post('payment/search', [PaymentController::class, 'search'])->name('payment.search');

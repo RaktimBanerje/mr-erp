@@ -9,11 +9,11 @@
 
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter:300,400,500,600,700" />
 
-    <link href="../assets/plugins/custom/datatables/datatables.bundle.css" rel="stylesheet" type="text/css" />
-    <link href="../assets/plugins/custom/vis-timeline/vis-timeline.bundle.css" rel="stylesheet" type="text/css" />
+    <link href="{{ url('assets/plugins/custom/datatables/datatables.bundle.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ url('assets/plugins/custom/vis-timeline/vis-timeline.bundle.css') }}" rel="stylesheet" type="text/css" />
 
-    <link href="../assets/plugins/global/plugins.bundle.css" rel="stylesheet" type="text/css" />
-    <link href="../assets/css/style.bundle.css" rel="stylesheet" type="text/css" />
+    <link href="{{ url('assets/plugins/global/plugins.bundle.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ url('assets/css/style.bundle.css') }}" rel="stylesheet" type="text/css" />
     <script src="https://code.jquery.com/jquery-3.7.1.slim.js" integrity="sha256-UgvvN8vBkgO0luPSUl2s8TIlOSYRoGFAX4jlCIm9Adc=" crossorigin="anonymous"></script>
 
     <style>
@@ -140,20 +140,20 @@
     <!--end::App-->
 
     <!--begin::Global Javascript Bundle(mandatory for all pages)-->
-    <script src="../assets/plugins/global/plugins.bundle.js"></script>
-    <script src="../assets/js/scripts.bundle.js"></script>
+    <script src="{{ url('assets/plugins/global/plugins.bundle.js') }}"></script>
+    <script src="{{ url('assets/js/scripts.bundle.js') }}"></script>
     <!--end::Global Javascript Bundle-->
 
     <!--begin::Vendors Javascript(used for this page only)-->
-    <script src="../assets/plugins/custom/datatables/datatables.bundle.js"></script>
-    <script src="../assets/plugins/custom/vis-timeline/vis-timeline.bundle.js"></script>
+    <script src="{{ url('assets/plugins/custom/datatables/datatables.bundle.js') }}"></script>
+    <script src="{{ url('assets/plugins/custom/vis-timeline/vis-timeline.bundle.js') }}"></script>
 
-    <script src="../assets/js/widgets.bundle.js"></script>
-    <script src="../assets/js/custom/widgets.js"></script>
-    <script src="../assets/js/custom/apps/chat/chat.js"></script>
-    <script src="../assets/js/custom/utilities/modals/upgrade-plan.js"></script>
-    <script src="../assets/js/custom/utilities/modals/create-campaign.js"></script>
-    <script src="../assets/js/custom/utilities/modals/new-address.js"></script>
-    <script src="../assets/js/custom/utilities/modals/users-search.js"></script>
+    <script src="{{ url('assets/js/widgets.bundle.js') }}"></script>
+    <script src="{{ url('assets/js/custom/widgets.js') }}"></script>
+    <script src="{{ url('assets/js/custom/apps/chat/chat.js') }}"></script>
+    <script src="{{ url('assets/js/custom/utilities/modals/upgrade-plan.js') }}"></script>
+    <script src="{{ url('assets/js/custom/utilities/modals/create-campaign.js') }}"></script>
+    <script src="{{ url('assets/js/custom/utilities/modals/new-address.js') }}"></script>
+    <script src="{{ url('assets/js/custom/utilities/modals/users-search.js') }}"></script>
 </body>
 </html>

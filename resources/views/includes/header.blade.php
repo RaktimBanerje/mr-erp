@@ -108,7 +108,7 @@
                                         class="d-flex text-gray-900 text-hover-primary align-items-center mb-5">
                                         <!--begin::Symbol-->
                                         <div class="symbol symbol-40px me-4">
-                                            <img src="../assets/media/avatars/300-6.jpg" alt="" />
+                                            <img src="{{ url('assets/media/avatars/300-6.jpg') }}" alt="" />
                                         </div>
                                         <!--end::Symbol-->
 
@@ -129,7 +129,7 @@
                                         class="d-flex text-gray-900 text-hover-primary align-items-center mb-5">
                                         <!--begin::Symbol-->
                                         <div class="symbol symbol-40px me-4">
-                                            <img src="../assets/media/avatars/300-2.jpg" alt="" />
+                                            <img src="{{ url('assets/media/avatars/300-2.jpg') }}" alt="" />
                                         </div>
                                         <!--end::Symbol-->
 
@@ -150,7 +150,7 @@
                                         class="d-flex text-gray-900 text-hover-primary align-items-center mb-5">
                                         <!--begin::Symbol-->
                                         <div class="symbol symbol-40px me-4">
-                                            <img src="../assets/media/avatars/300-9.jpg" alt="" />
+                                            <img src="{{ url('assets/media/avatars/300-9.jpg') }}" alt="" />
                                         </div>
                                         <!--end::Symbol-->
 
@@ -170,7 +170,7 @@
                                         class="d-flex text-gray-900 text-hover-primary align-items-center mb-5">
                                         <!--begin::Symbol-->
                                         <div class="symbol symbol-40px me-4">
-                                            <img src="../assets/media/avatars/300-14.jpg" alt="" />
+                                            <img src="{{ url('assets/media/avatars/300-14.jpg') }}" alt="" />
                                         </div>
                                         <!--end::Symbol-->
 
@@ -190,7 +190,7 @@
                                         class="d-flex text-gray-900 text-hover-primary align-items-center mb-5">
                                         <!--begin::Symbol-->
                                         <div class="symbol symbol-40px me-4">
-                                            <img src="../assets/media/avatars/300-11.jpg" alt="" />
+                                            <img src="{{ url('assets/media/avatars/300-11.jpg') }}" alt="" />
                                         </div>
                                         <!--end::Symbol-->
 
@@ -888,7 +888,7 @@
                     data-kt-menu="true" id="kt_menu_notifications">
                     <!--begin::Heading-->
                     <div class="d-flex flex-column bgi-no-repeat rounded-top"
-                        style="background-image:url('../assets/media/misc/menu-header-bg.jpg')">
+                        style="background-image:url('{{ url('assets/media/misc/menu-header-bg.jpg') }}'">
                         <!--begin::Title-->
                         <h3 class="text-white fw-semibold px-9 mt-10 mb-6">
                             Notifications <span class="fs-8 opacity-75 ps-3">24 reports</span>
@@ -1170,7 +1170,7 @@
                                 <!--begin::Illustration-->
                                 <div class="text-center px-4">
                                     <img class="mw-100 mh-200px" alt="image"
-                                        src="../assets/media/illustrations/sketchy-1/1.png" />
+                                        src="{{ url('assets/media/illustrations/sketchy-1/1.png') }}" />
                                 </div>
                                 <!--end::Illustration-->
                             </div>
@@ -1466,7 +1466,7 @@
                     data-kt-menu="true">
                     <!--begin::Heading-->
                     <div class="d-flex flex-column flex-center bgi-no-repeat rounded-top px-9 py-10"
-                        style="background-image:url('../assets/media/misc/menu-header-bg.jpg')">
+                        style="background-image:url('{{ url('assets/media/misc/menu-header-bg.jpg') }}">
                         <!--begin::Title-->
                         <h3 class="text-white fw-semibold mb-3">
                             Quick Links
@@ -1560,7 +1560,7 @@
                 <div class="cursor-pointer symbol symbol-circle symbol-30px symbol-lg-45px"
                     data-kt-menu-trigger="{default: 'click', lg: 'hover'}" data-kt-menu-attach="parent"
                     data-kt-menu-placement="bottom-end">
-                    <img src="../assets/media/avatars/300-2.jpg" alt="user" />
+                    <img src="{{ url('assets/media/avatars/300-2.jpg') }}" alt="user" />
                 </div>
 
                 <!--begin::User account menu-->
@@ -1571,7 +1571,7 @@
                         <div class="menu-content d-flex align-items-center px-3">
                             <!--begin::Avatar-->
                             <div class="symbol symbol-50px me-5">
-                                <img alt="Logo" src="../assets/media/avatars/300-2.jpg" />
+                                <img alt="Logo" src="{{ url('assets/media/avatars/300-2.jpg') }}" />
                             </div>
                             <!--end::Avatar-->
 

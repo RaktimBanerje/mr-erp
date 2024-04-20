@@ -16,12 +16,12 @@ return new class extends Migration
         Schema::create('payments', function (Blueprint $table) {
             $table->id();
             $table->foreignIdFor(Student::class);
-            $table->foreignIdFor(StudentFees::class);
-            $table->float("payment_amount", 11, 2);
+            $table->float("payment_amount", 11, 2)->nullable();
             $table->text("payment_mode");
-            $table->text("transaction_id");
             $table->text("remarks");
             $table->text("docs");
+            $table->integer("created_by");
+            $table->softDeletes();
             $table->timestamps();
         });
     }

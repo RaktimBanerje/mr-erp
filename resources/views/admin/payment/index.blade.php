@@ -50,17 +50,29 @@
                                 <tr>
                                     <th class="text-nowrap">#</th>
                                     <th class="text-nowrap">Name</th>
-                                    <th class="text-nowrap">College</th>
-                                    <th class="text-nowrap">Course</th>
-                                    <th class="text-nowrap">Academy Session</th>
-                                    <th class="text-nowrap">Email</th>
-                                    <th class="text-nowrap">Phone</th>    
-                                    <th class="text-nowrap">Admission Date</th>    
+                                    <th class="text-nowrap">Payment Amount</th>
+                                    <th class="text-nowrap">Payment Mode</th>
+                                    <th class="text-nowrap">Payment Docs</th>
                                     <th class="text-nowrap">Action</th>    
                                 </tr>    
                             </thead>    
                             <tbody>
-
+                                @foreach($payments as $payment)
+                                <tr>
+                                    <td>{{$loop->iteration}}</td>
+                                    <td>{{$payment->student->name}}</td>
+                                    <td>{{number_format($payment->payment_amount, 2)}} INR</td>
+                                    <td>{{$payment->payment_mode}}</td>
+                                    <td>
+                                        <a target="_blank" href="{{Storage::url($payment->docs)}}"><strong>View</strong></a>
+                                    </td>
+                                    <td>
+                                        <div class="btn btn-group p-0">
+                                            <button class="btn btn-sm btn-primary">See Details</button>
+                                        </div>
+                                    </td>
+                                </tr>
+                                @endforeach
                             </tbody>
                         </table>    
                     </div>                                    

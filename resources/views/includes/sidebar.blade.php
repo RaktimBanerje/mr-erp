@@ -96,6 +96,41 @@
                         <!--end:Menu link-->
                     </div>
                     <!--end:Menu item-->
+                    <!--begin:Menu item-->
+                     <div class="menu-item">
+                        <!--begin:Menu link-->
+                        <a class="menu-link"
+                            href="{{route('payment.index')}}?payment_mode=CASH"><span
+                                class="menu-bullet"><span
+                                    class="bullet bullet-dot"></span></span><span
+                                class="menu-title">Cash Payment</span></a>
+                        <!--end:Menu link-->
+                    </div>
+                    <!--end:Menu item-->
+
+                    <!--begin:Menu item-->
+                    <div class="menu-item">
+                        <!--begin:Menu link-->
+                        <a class="menu-link"
+                            href="{{route('payment.index')}}?payment_mode=CHEQUE"><span
+                                class="menu-bullet"><span
+                                    class="bullet bullet-dot"></span></span><span
+                                class="menu-title">Cheque Payment</span></a>
+                        <!--end:Menu link-->
+                    </div>
+                    <!--end:Menu item-->
+
+                    <!--begin:Menu item-->
+                    <div class="menu-item">
+                        <!--begin:Menu link-->
+                        <a class="menu-link"
+                            href="{{route('payment.index')}}?payment_mode=DIRECT"><span
+                                class="menu-bullet"><span
+                                    class="bullet bullet-dot"></span></span><span
+                                class="menu-title">Direct Payment</span></a>
+                        <!--end:Menu link-->
+                    </div>
+                    <!--end:Menu item-->
                 </div>
                 <!--end:Menu sub-->
             </div>

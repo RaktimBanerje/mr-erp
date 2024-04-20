@@ -180,7 +180,8 @@
                                         </td>
                                         <td class="text-nowrap">
                                             <div class="btn btn-group p-0">
-                                                <a class="btn btn-sm btn-primary mx-1" href="{{route('payment.fees_detail', $student->id)}}">Payment Details</a>
+                                                <a class="btn btn-sm btn-primary mx-1" href="{{route('payment.fees_detail', $student->id)}}">Fees Detail</a>
+                                                <a class="btn btn-sm btn-primary mx-1" href="{{route('payment.new_collection', $student->id)}}">Collect Payment</a>
                                             </div>
                                         </td>
                                     </tr>
@@ -198,6 +199,8 @@
         <!--end::Content-->
 
     </div>
+
+    
     @endisset
 @stop
  
