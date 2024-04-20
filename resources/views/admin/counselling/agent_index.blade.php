@@ -117,36 +117,45 @@
 
                 <!--begin::Row-->
                 <div class="row gy-5 gx-xl-10 my-5">
-                    <table class="table table-bordered border-1 border-black" style="border-right: 1px solid black;">
-                        <thead>
-                            <tr>
-                                <th class="text-nowrap">#</th>
-                                @if(auth()->user()->role != 'agent')
-                                <th class="text-nowrap">Counselling By</th>
-                                @endif
-                                <th class="text-nowrap">Proposed Fees</th>
-                                <th class="text-nowrap">Student Asking Fees</th>
-                                <th class="text-nowrap">Counselling Date</th>
-                                <th class="text-nowrap">Docs</th>    
-                            </tr>    
-                        </thead>    
-                        <tbody>
-                            @foreach($student->counsellings as $counselling)
+                    @if(count($student->counsellings) > 0)
+                    <div class="table-responsive">
+                        <table class="table table-bordered border-1 border-black" style="border-right: 1px solid black;">
+                            <thead>
                                 <tr>
-                                    <td class="text-nowrap">#</td>
+                                    <th class="text-nowrap">#</th>
                                     @if(auth()->user()->role != 'agent')
-                                    <td class="text-nowrap">{{$counselling->user_name}}</td>
+                                    <th class="text-nowrap">Counselling By</th>
                                     @endif
-                                    <td class="text-nowrap">{{$counselling->proposed_fees}}</td>
-                                    <td class="text-nowrap">{{$counselling->asking_fees}}</td>
-                                    <td class="text-nowrap">{{date('d-m-Y', strtotime($counselling->created_at))}}</td>
-                                    <td class="text-nowrap">
-                                        <a href="{{Storage::url($counselling->docs)}}" target="_blank" class="btn btn-primary btn-sm">View</a>    
-                                    </td>    
-                                </tr> 
-                            @endforeach
-                        </tbody>
-                    </table>    
+                                    <th class="text-nowrap">Proposed Fees</th>
+                                    <th class="text-nowrap">Student Asking Fees</th>
+                                    <th class="text-nowrap">Counselling Date</th>
+                                    <th class="text-nowrap">Docs</th>    
+                                </tr>    
+                            </thead>    
+                            <tbody>
+                                @foreach($student->counsellings as $counselling)
+                                    <tr>
+                                        <td class="text-nowrap">#</td>
+                                        @if(auth()->user()->role != 'agent')
+                                        <td class="text-nowrap">{{$counselling->user_name}}</td>
+                                        @endif
+                                        <td class="text-nowrap">{{$counselling->proposed_fees}}</td>
+                                        <td class="text-nowrap">{{$counselling->asking_fees}}</td>
+                                        <td class="text-nowrap">{{date('d-m-Y', strtotime($counselling->created_at))}}</td>
+                                        <td class="text-nowrap">
+                                            <a href="{{Storage::url($counselling->docs)}}" target="_blank" class="btn btn-primary btn-sm">View</a>    
+                                        </td>    
+                                    </tr> 
+                                @endforeach
+                            </tbody>
+                        </table>
+                    </div>
+                    @else
+                    <div class="text-center">
+                        <img class="img-fluid" src="{{url('assets/media/illustrations/empty-box.png')}}" style="height: 300px; width: auto;" />
+                        <h2 class="text-muted text-center mt-4">No Data Found</h2>
+                    </div>
+                    @endif
                 </div>
                 <!--end::Row-->
 

@@ -139,6 +139,7 @@
                 
                 <!--begin::Row-->
                 <div class="row gy-5 gx-xl-10 mb-5">
+                    @if(count($students) > 0)
                     <div class="table-responsive">
                         <table class="table table-bordered border-1 border-black" style="border-right: 1px solid black;">
                             <thead>
@@ -179,7 +180,13 @@
                                 @endforeach
                             </tbody>
                         </table>    
-                    </div>                                    
+                    </div>                   
+                    @else
+                    <div class="text-center">
+                        <img class="img-fluid" src="{{url('assets/media/illustrations/empty-box.png')}}" style="height: 300px; width: auto;" />
+                        <h2 class="text-muted text-center mt-4">No Data Found</h2>
+                    </div>
+                    @endif                 
                 </div>
                 <!--end::Row-->
                 

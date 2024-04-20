@@ -36,6 +36,7 @@
 
                 <!--begin::Row-->
                 <div class="row">
+                    @if(count($student_fees) > 0)
                     @foreach ($student_fees as $fees)
                         <div class="col-md-6">
                             <div class="border border-hover-primary p-7 rounded mb-7">
@@ -144,6 +145,12 @@
                             </div>
                         </div>
                     @endforeach
+                    @else
+                    <div class="text-center">
+                        <img class="img-fluid" src="{{url('assets/media/illustrations/empty-box.png')}}" style="height: 300px; width: auto;" />
+                        <h2 class="text-muted text-center mt-4">No Data Found</h2>
+                    </div>
+                    @endif
                 </div>
                 <!--end::Row-->
 
