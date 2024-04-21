@@ -1,12 +1,13 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
-use App\Models\Contact;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AgentStudentController;
 use App\Http\Controllers\CounsellingController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\StudentController;
+use App\Http\Controllers\ContactController;
+use App\Http\Controllers\LeadSourceController;
 
 /*
 |--------------------------------------------------------------------------
@@ -43,7 +44,8 @@ Route::middleware('auth')->group(function () {
 
 
     Route::group(["prefix" => "crm"], function(){
-        Route::resource('contacts', Contact::class);
+        Route::resource('contacts', ContactController::class);
+        Route::resource('leadsource', LeadSourceController::class);
     });
 
 

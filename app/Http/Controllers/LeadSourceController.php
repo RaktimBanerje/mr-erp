@@ -12,7 +12,7 @@ class LeadSourceController extends Controller
      */
     public function index()
     {
-        //
+        return view("admin.lead_source.index");
     }
 
     /**

@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Contact;
 use Illuminate\Http\Request;
+use App\Models\LeadSourceCaller;
+use App\Models\LeadCaller;
 
 class ContactController extends Controller
 {
@@ -12,6 +14,7 @@ class ContactController extends Controller
      */
     public function index()
     {
+        
         return view("admin.contact.index");
     }
 

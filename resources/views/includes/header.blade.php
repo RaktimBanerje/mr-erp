@@ -1479,7 +1479,7 @@
                     <div class="row g-0">
                         <!--begin:Item-->
                         <div class="col-6">
-                            <a href="https://preview.keenthemes.com/metronic8/demo39/apps/projects/budget.html"
+                            <a href="/"
                                 class="d-flex flex-column flex-center h-100 p-6 bg-hover-light border-end border-bottom">
                                 <i class="ki-outline ki-dollar fs-3x text-primary mb-2"></i> <span
                                     class="fs-5 fw-semibold text-gray-800 mb-0">ERP</span>
@@ -1489,7 +1489,7 @@
 
                         <!--begin:Item-->
                         <div class="col-6">
-                            <a href="https://preview.keenthemes.com/metronic8/demo39/apps/projects/settings.html"
+                            <a href="{{route('contacts.index')}}"
                                 class="d-flex flex-column flex-center h-100 p-6 bg-hover-light border-bottom">
                                 <i class="ki-outline ki-sms fs-3x text-primary mb-2"></i> <span
                                     class="fs-5 fw-semibold text-gray-800 mb-0">CRM</span>
