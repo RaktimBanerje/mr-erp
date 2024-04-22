@@ -43,7 +43,26 @@
 
                 <!--begin::Row-->
                 <div class="row gy-5 gx-xl-10 mb-5">
-
+                    <div class="row gy-5 gx-xl-10 mb-5">
+                        @if(count($sources) > 0)
+                        @foreach($sources as $source)
+                            <div class="col-md-3">
+                                <div class="card">
+                                    <img class="card-img-top" src="{{Storage::url($source->image)}}" style="height: 64px; width: auto;">
+                                    <div class="card-body">
+                                        <h4 class="card-title">{{$source->name}}</h4>
+                                        <p class="card-text text-muted" style="font-size: 12px;">{{$source->identity}}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        @endforeach
+                        @else
+                        <div class="text-center">
+                            <img class="img-fluid" src="{{url('assets/media/illustrations/empty-box.png')}}" style="height: 300px; width: auto;" />
+                            <h2 class="text-muted text-center mt-4">No Data Found</h2>
+                        </div>
+                        @endif                                    
+                    </div>
                 </div>
                 <!--end::Row-->
 
@@ -240,8 +259,9 @@
                         <!--begin::Content-->
                         <div class="flex-row-fluid py-lg-5 px-lg-15">
                             <!--begin::Form-->
-                            <form class="form fv-plugins-bootstrap5 fv-plugins-framework" novalidate="novalidate"
+                            <form action="{{route('leadsource.store')}}" method="POST" class="form fv-plugins-bootstrap5 fv-plugins-framework" novalidate="novalidate"
                                 id="kt_modal_create_app_form" enctype="multipart/form-data">
+                            @csrf
                                 <!--begin::Step 1-->
                                 <div class="current" data-kt-stepper-element="content">
                                     <div class="w-100">
@@ -341,7 +361,7 @@
                                                 <!--begin:Input-->
                                                 <span class="form-check form-check-custom form-check-solid">
                                                     <input class="form-check-input" type="radio" checked=""
-                                                        name="framework" value="1">
+                                                        name="channel" value="1">
                                                 </span>
                                                 <!--end:Input-->
                                             </label>
@@ -428,7 +448,7 @@
                                             <!--begin::Input with Generate and Copy Button-->
                                             <div class="input-group">
                                                 <input type="text" class="form-control form-control-lg form-control-solid" id="generatedValue"
-                                                    name="key" placeholder="" value="" readonly>
+                                                    name="identity" placeholder="" value="" readonly>
                                                 <div class="input-group-append">
                                                     <button class="btn btn-success" type="button" id="generateAndCopyBtn">Copy</button>
                                                 </div>
@@ -479,7 +499,9 @@
 
                                     <!--begin::Wrapper-->
                                     <div>
-                                        <button type="button" class="btn btn-lg btn-primary"
+                                        <button id="btnSubmit" type="submit" class="btn btn-primary d-none">Submit</button>
+                                        
+                                        <button onclick="$('#btnSubmit').click()" type="button" class="btn btn-lg btn-primary"
                                             data-kt-stepper-action="submit">
                                             <span class="indicator-label">
                                                 Submit

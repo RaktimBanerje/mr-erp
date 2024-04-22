@@ -18,32 +18,9 @@
                         <!--begin::Title-->
                         <h1
                             class="page-heading d-flex flex-column justify-content-center text-gray-900 fw-bold fs-3 m-0">
-                            New Counselling
+                            Contacts
                         </h1>
                         <!--end::Title-->
-
-                        {{-- <!--begin::Breadcrumb-->
-                        <ul class="breadcrumb breadcrumb-separatorless fw-semibold fs-7 my-0">
-                            <!--begin::Item-->
-                            <li class="breadcrumb-item text-muted">
-                                <a href="https://preview.keenthemes.com/metronic8/demo39/index.html"
-                                    class="text-muted text-hover-primary">
-                                    Home </a>
-                            </li>
-                            <!--end::Item-->
-                            <!--begin::Item-->
-                            <li class="breadcrumb-item">
-                                <span class="bullet bg-gray-500 w-5px h-2px"></span>
-                            </li>
-                            <!--end::Item-->
-
-                            <!--begin::Item-->
-                            <li class="breadcrumb-item text-muted">
-                                Dashboards </li>
-                            <!--end::Item-->
-
-                        </ul>
-                        <!--end::Breadcrumb--> --}}
                     </div>
                     <!--end::Page title-->
                 </div>
@@ -60,7 +37,61 @@
             <div id="kt_app_content_container" class="app-container  container-fluid ">
                 
                 <!--begin::Row-->
-                <div class="row gy-5 gx-xl-10 my-5"></div>
+                <div class="row gy-5 gx-xl-10 my-5">
+                    <!-- Nav tabs -->
+                    <ul class="nav nav-pills" style="padding-left: 25px; padding-right: 25px;">
+                        @foreach($records as $record)
+                        <li class="nav-item" role="presentation">
+                            <a class="nav-link <?php if($loop->iteration == 1) { echo 'active'; } ?>" data-bs-toggle="tab" href="#source{{$record->id}}">{{$record->source->name}}</a>
+                        </li>
+                        @endforeach
+                    </ul>
+                    
+                    <!-- Tab panes -->
+                    <div class="tab-content">
+                        @foreach($records as $record) 
+                        @php
+                            $fields = json_decode($record->source->fields);
+
+                            $keys = [];
+
+                            foreach($fields as $field) {
+                                $keys[] = $field->key;
+                            }
+                        @endphp
+                            <div class="tab-pane container active" id="source{{$record->id}}">
+                                <div class="table-responsive">
+                                    <table class="table table-sm table-bordered border-1 border-black" style="border-right: 1px solid black;">
+                                        <thead>
+                                            <tr>
+                                                @foreach($fields as $field)
+                                                    <th>{{$field->label}}</th>
+                                                @endforeach
+                                                <th>Status</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @foreach($record->contacts as $contact) @php $data = json_decode($contact->data); @endphp
+                                                <tr>
+                                                    @foreach($keys as $key)
+                                                        <td style="font-size: large;">{{$data->$key}}</td>
+                                                    @endforeach
+                                                    <td>
+                                                        <select class="form-select form-sm">
+                                                        @foreach($statuses as $status)
+                                                            <option value={{$status->id}} style="background-color: {{$status->color}}; padding: 5px 10px;  font-size: 20px; color: white;">{{$status->title}}</option>
+                                                        @endforeach
+                                                        </select>
+                                                    </td>
+                                                </tr>
+                                            @endforeach
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        @endforeach
+                    </div>
+                </div>
                 <!--end::Row-->
                 
             </div>

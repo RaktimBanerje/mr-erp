@@ -12,7 +12,8 @@ class LeadSourceController extends Controller
      */
     public function index()
     {
-        return view("admin.lead_source.index");
+        $sources = LeadSource::latest()->get();
+        return view("admin.lead_source.index", compact('sources'));
     }
 
     /**
@@ -28,7 +29,31 @@ class LeadSourceController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $source = new LeadSource();
+
+        $source->name = $request->name;
+        $source->image = $request->hasFile('image') ? $request->file('image')->store('lead_source', 'public') : null;
+        $source->identity = $request->identity;
+        $source->key = $request->identity;
+        $source->lead_channel_id = $request->channel;
+
+        $label = $request->label;
+        $key = $request->key;
+        $type = $request->type;
+        $data = [];
+
+        for($i = 0; $i < count($label); $i++) {
+            $data[] = [
+                "label"     => $label[$i],
+                "key"       => $key[$i],
+                "type"      => $type[$i],
+            ];
+        }
+
+        $source->fields = json_encode($data);
+        $source->save();
+
+        return redirect()->route("leadsource.index")->with("New lead source created");
     }
 
     /**

@@ -12,7 +12,8 @@ class LeadStatusController extends Controller
      */
     public function index()
     {
-        //
+        $records = LeadStatus::all();
+        return view("admin.leadstatus.index", compact("records"));
     }
 
     /**

@@ -8,6 +8,7 @@ use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\LeadSourceController;
+use App\Http\Controllers\LeadStatusController;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,6 +29,9 @@ use App\Http\Controllers\LeadSourceController;
 //     }
 // })->middleware(['auth', 'verified'])->name('dashboard');
 
+
+Route::post('contact/create/{identity}', [ContactController::class, 'store'])->withoutMiddleware([\App\Http\Middleware\VerifyCsrfToken::class]);
+
 Route::middleware('auth')->group(function () {
 
     Route::group(["prefix" => "erp"], function(){
@@ -46,6 +50,7 @@ Route::middleware('auth')->group(function () {
     Route::group(["prefix" => "crm"], function(){
         Route::resource('contacts', ContactController::class);
         Route::resource('leadsource', LeadSourceController::class);
+        Route::resource('leadstatus', LeadStatusController::class);
     });
 
 

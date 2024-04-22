@@ -6,6 +6,8 @@ use App\Models\Contact;
 use Illuminate\Http\Request;
 use App\Models\LeadSourceCaller;
 use App\Models\LeadCaller;
+use App\Models\LeadStatus;
+use App\Models\LeadSource;
 
 class ContactController extends Controller
 {
@@ -14,8 +16,17 @@ class ContactController extends Controller
      */
     public function index()
     {
-        
-        return view("admin.contact.index");
+        $statuses = LeadStatus::all();
+        $sources = LeadSourceCaller::select("lead_source_id")->distinct("lead_source_id")->where("user_id", auth()->user()->id)->get();
+        $records = [];
+
+        foreach($sources as $source) {
+            $source->source = LeadSource::find($source->lead_source_id);
+            $source->contacts = Contact::where("lead_source_id", $source->lead_source_id)->latest()->get();
+            $records[] = $source;
+        }
+
+        return view("admin.contact.index", compact('records', 'statuses'));
     }
 
     /**
@@ -31,7 +42,36 @@ class ContactController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $source = LeadSource::where("identity", $request->identity)->first();
+        $fields = json_decode($source->fields); 
+        $keysToCheck = [];
+
+        foreach($fields as $field) {
+            $keysToCheck[] = $field->key;
+        }
+
+        // Initialize an empty array to store the values
+        $data = [];
+
+        // Loop through the keys and check if they exist in the $_POST array
+        foreach ($keysToCheck as $key) {
+            // Check if the key exists in the request data
+            if ($request->has($key)) {
+                // If it exists, store its value
+                $data[$key] = $request->input($key);
+            } else {
+                // If it doesn't exist, store null
+                $data[$key] = null;
+            }
+        }
+
+        $contact = new Contact();
+        $contact->lead_source_id = $source->id;
+        $contact->identity = time();
+        $contact->data = json_encode($data);
+        $contact->save();
+
+        return response()->json($data, 200);
     }
 
     /**
