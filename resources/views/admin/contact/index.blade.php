@@ -42,7 +42,7 @@
                     <ul class="nav nav-pills" style="padding-left: 25px; padding-right: 25px;">
                         @foreach($records as $record)
                         <li class="nav-item" role="presentation">
-                            <a class="nav-link <?php if($loop->iteration == 1) { echo 'active'; } ?>" data-bs-toggle="tab" href="#source{{$record->id}}">{{$record->source->name}}</a>
+                            <a class="nav-link <?php if($loop->iteration == 1) { echo 'active'; } ?>" data-bs-toggle="tab" href="#source{{$loop->iteration}}">{{$record->source->name}}</a>
                         </li>
                         @endforeach
                     </ul>
@@ -59,7 +59,7 @@
                                 $keys[] = $field->key;
                             }
                         @endphp
-                            <div class="tab-pane container active" id="source{{$record->id}}">
+                            <div class="tab-pane container <?php if($loop->iteration == 1) { echo 'active'; } ?>" id="source{{$loop->iteration }}">
                                 <div class="table-responsive">
                                     <table class="table table-sm table-bordered border-1 border-black" style="border-right: 1px solid black;">
                                         <thead>
@@ -74,7 +74,7 @@
                                             @foreach($record->contacts as $contact) @php $data = json_decode($contact->data); @endphp
                                                 <tr>
                                                     @foreach($keys as $key)
-                                                        <td style="font-size: large;">{{$data->$key}}</td>
+                                                        <td>{{$data->$key}}</td>
                                                     @endforeach
                                                     <td>
                                                         <select class="form-select form-sm">
